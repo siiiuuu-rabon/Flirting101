@@ -1,13 +1,16 @@
-const apiURL = "https://raw.githubusercontent.com/USERNAME/REPO/main/messages.json"; 
-// replace this with your actual link
+const apiURL = "https://raw.githubusercontent.com/siiiuuu-rabon/Flirting101/main/messages.json";
 
 let messages = [];
 
 async function loadMessages() {
-    const response = await fetch(apiURL);
-    const data = await response.json();
-    messages = data.messages;
-    newMessage();
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+        messages = data.messages;
+        newMessage();
+    } catch (error) {
+        document.getElementById("messageBox").innerText = "Error loading messages 😔";
+    }
 }
 
 function newMessage() {
